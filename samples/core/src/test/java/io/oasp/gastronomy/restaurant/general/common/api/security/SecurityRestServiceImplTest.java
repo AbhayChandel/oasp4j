@@ -8,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -20,7 +19,6 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
-import io.oasp.gastronomy.restaurant.SpringBootApp;
 import io.oasp.gastronomy.restaurant.general.common.api.to.UserDetailsClientTo;
 import io.oasp.gastronomy.restaurant.general.common.base.AbstractRestServiceTest;
 import io.oasp.gastronomy.restaurant.general.service.impl.rest.SecurityRestServiceImpl;
@@ -29,7 +27,6 @@ import io.oasp.gastronomy.restaurant.general.service.impl.rest.SecurityRestServi
  * This class tests the login functionality of {@link SecurityRestServiceImpl}.
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = SpringBootApp.class)
 @TestPropertySource(properties = { "flyway.locations=filesystem:src/test/resources/db/tablemanagement" })
 public class SecurityRestServiceImplTest extends AbstractRestServiceTest {
 

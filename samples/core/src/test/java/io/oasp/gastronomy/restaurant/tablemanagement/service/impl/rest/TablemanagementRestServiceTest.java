@@ -4,11 +4,9 @@ import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import io.oasp.gastronomy.restaurant.SpringBootApp;
 import io.oasp.gastronomy.restaurant.general.common.api.builders.TableEtoBuilder;
 import io.oasp.gastronomy.restaurant.general.common.base.AbstractRestServiceTest;
 import io.oasp.gastronomy.restaurant.tablemanagement.common.api.datatype.TableState;
@@ -22,7 +20,6 @@ import io.oasp.module.jpa.common.api.to.PaginatedListTo;
  *
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = SpringBootApp.class)
 @TestPropertySource(properties = { "flyway.locations=filesystem:src/test/resources/db/tablemanagement" })
 // , locations = {"file:src/test/resources/config" })
 

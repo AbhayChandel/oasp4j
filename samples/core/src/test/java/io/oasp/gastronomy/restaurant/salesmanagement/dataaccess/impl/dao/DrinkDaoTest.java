@@ -12,7 +12,8 @@ import org.hibernate.envers.AuditReader;
 import org.hibernate.envers.AuditReaderFactory;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.context.annotation.Import;
 
 import io.oasp.gastronomy.restaurant.SpringBootApp;
 import io.oasp.gastronomy.restaurant.general.common.api.builders.DrinkEntityBuilder;
@@ -26,8 +27,8 @@ import io.oasp.module.test.common.base.ComponentTest;
  *
  */
 
-@SpringBootTest(classes = { SpringBootApp.class })
-@WebAppConfiguration
+@SpringBootTest(classes = { SpringBootApp.class }, webEnvironment = WebEnvironment.RANDOM_PORT)
+@Import(DrinkDaoTest.DrinkDaoTestBean.class)
 public class DrinkDaoTest extends ComponentTest {
 
   @Inject
@@ -47,13 +48,6 @@ public class DrinkDaoTest extends ComponentTest {
 
   }
 
-  /**
-   *
-   * This type provides methods in a transactional environment for the containing test class. All methods, annotated
-   * with the {@link Transactional} annotation, are executed in separate transaction, thus one test case can execute
-   * multiple transactions.
-   *
-   */
   @Named
   static class DrinkDaoTestBean {
 
@@ -118,4 +112,5 @@ public class DrinkDaoTest extends ComponentTest {
       this.entityManager = entityManager;
     }
   };
+
 }

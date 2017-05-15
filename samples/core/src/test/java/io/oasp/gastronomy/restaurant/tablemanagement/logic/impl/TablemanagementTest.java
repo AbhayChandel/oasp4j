@@ -17,6 +17,7 @@ import io.oasp.gastronomy.restaurant.general.common.TestUtil;
 import io.oasp.gastronomy.restaurant.general.common.api.builders.OrderEtoBuilder;
 import io.oasp.gastronomy.restaurant.general.common.api.builders.OrderPositionEtoBuilder;
 import io.oasp.gastronomy.restaurant.general.common.api.constants.PermissionConstants;
+import io.oasp.gastronomy.restaurant.general.common.api.datatype.Money;
 import io.oasp.gastronomy.restaurant.general.common.api.exception.IllegalEntityStateException;
 import io.oasp.gastronomy.restaurant.salesmanagement.logic.api.Salesmanagement;
 import io.oasp.gastronomy.restaurant.salesmanagement.logic.api.to.OrderEto;
@@ -91,6 +92,8 @@ public class TablemanagementTest extends ComponentTest {
     OrderEto order = this.salesmanagement.saveOrder(newOrder);
     long orderId = order.getId();
     OrderPositionEto newOrderPosition = new OrderPositionEtoBuilder().orderId(orderId).offerId(offerId).createNew();
+    newOrderPosition.setPrice(new Money(2.99));
+    newOrderPosition.setOfferName("dummy");
     OrderPositionEto orderPosition = this.salesmanagement.saveOrderPosition(newOrderPosition);
 
     // then

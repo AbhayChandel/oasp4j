@@ -10,8 +10,10 @@ import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.context.annotation.ImportResource;
 
 import io.oasp.gastronomy.restaurant.SpringBootBatchApp;
 import io.oasp.gastronomy.restaurant.general.common.AbstractSpringBatchIntegrationTest;
@@ -25,9 +27,9 @@ import io.oasp.gastronomy.restaurant.offermanagement.logic.api.to.ProductEto;
  * End-To-End test job "import offer management from csv"
  *
  */
-@SpringBootTest(classes = { SpringBootBatchApp.class }, properties = {
-"locations=classpath:config/app/batch/beans-productimport.xml" })
-@WebAppConfiguration
+@SpringBootTest(classes = { SpringBootBatchApp.class }, webEnvironment = WebEnvironment.RANDOM_PORT)
+@ImportResource("classpath:config/app/batch/beans-productimport.xml")
+@EnableAutoConfiguration
 public class ProductImportJobTest extends AbstractSpringBatchIntegrationTest {
 
   @Inject
