@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.ServletContext;
 
 import org.apache.commons.codec.binary.Base64;
 import org.json.JSONArray;
@@ -65,6 +66,9 @@ public class SalesmanagementHttpRestServiceTest extends AbstractRestServiceTest 
 
   @Inject
   private TestRestTemplate template;
+
+  @Inject
+  private ServletContext servletContext;
 
   /**
    * Provides initialization previous to the creation of the text fixture.
@@ -368,7 +372,7 @@ public class SalesmanagementHttpRestServiceTest extends AbstractRestServiceTest 
    */
   private String generateBaseUrl() {
 
-    return BASE_URL_PRAEFIX + this.port + BASE_URL_SUFFIX_1 + BASE_URL_SUFFIX_2;
+    return BASE_URL_PRAEFIX + this.port + this.servletContext.getContextPath() + BASE_URL_SUFFIX_1 + BASE_URL_SUFFIX_2;
   }
 
   /**

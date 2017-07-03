@@ -2,6 +2,9 @@ package io.oasp.gastronomy.restaurant.general.common.api.security;
 
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.servlet.ServletContext;
+
 import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,6 +42,9 @@ public class SecurityRestServiceImplTest extends AbstractRestServiceTest {
 
   private RestTemplate template = new RestTemplate();
 
+  @Inject
+  private ServletContext servletContext;
+
   /**
    * Test the login functionality as it will be used from a JavaScript client.
    */
@@ -65,7 +71,8 @@ public class SecurityRestServiceImplTest extends AbstractRestServiceTest {
 
     String userName = "waiter";
     String tmpPassword = "waiter";
-    String tmpUrl = "http://localhost:" + String.valueOf(this.port) + "/services/rest/security/v1/currentuser";
+    String tmpUrl = "http://localhost:" + String.valueOf(this.port) + this.servletContext.getContextPath()
+        + "/services/rest/security/v1/currentuser";
 
     ResponseEntity<String> loginResponse = login(userName, tmpPassword);
 
@@ -124,7 +131,8 @@ public class SecurityRestServiceImplTest extends AbstractRestServiceTest {
    */
   private ResponseEntity<String> csrf(String jsessionId) {
 
-    String tmpUrl = "http://localhost:" + String.valueOf(this.port) + "/services/rest/security/v1/csrftoken";
+    String tmpUrl = "http://localhost:" + String.valueOf(this.port) + this.servletContext.getContextPath()
+        + "/services/rest/security/v1/csrftoken";
     HttpHeaders headers = prepareHeaders(new StrTup(HttpHeaders.COOKIE, jsessionId));
     HttpEntity<String> entity = new HttpEntity<>(headers);
     ResponseEntity<String> responseEntity = this.template.exchange(tmpUrl, HttpMethod.GET, entity, String.class);
@@ -140,7 +148,8 @@ public class SecurityRestServiceImplTest extends AbstractRestServiceTest {
    */
   private ResponseEntity<String> login(String userName, String tmpPassword) {
 
-    String tmpUrl = "http://localhost:" + String.valueOf(this.port) + "/services/rest/login";
+    String tmpUrl =
+        "http://localhost:" + String.valueOf(this.port) + this.servletContext.getContextPath() + "/services/rest/login";
 
     HttpEntity<String> postRequest = new HttpEntity<>(
         prepareJson(new StrTup("j_username", userName), new StrTup("j_password", tmpPassword)), prepareHeaders());

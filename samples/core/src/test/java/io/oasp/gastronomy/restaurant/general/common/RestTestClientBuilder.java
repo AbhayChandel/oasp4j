@@ -3,6 +3,9 @@ package io.oasp.gastronomy.restaurant.general.common;
 import java.util.Arrays;
 import java.util.HashMap;
 
+import javax.inject.Inject;
+import javax.servlet.ServletContext;
+
 import org.apache.cxf.common.util.Base64Utility;
 import org.apache.cxf.jaxrs.client.JAXRSClientFactoryBean;
 
@@ -27,6 +30,9 @@ public class RestTestClientBuilder {
    * The user used for authentication during testing.
    */
   private String login;
+
+  @Inject
+  private ServletContext servletContext;
 
   /**
    * This method creates a proxy for the specified {@code RestService} interface. Use {@code #setLogin(String)} to set
@@ -93,7 +99,7 @@ public class RestTestClientBuilder {
    */
   private String createRestServiceUrl() {
 
-    return "http://localhost:" + this.localServerPort + "/services/rest";
+    return "http://localhost:" + this.localServerPort + this.servletContext.getContextPath() + "/services/rest";
   }
 
   /**
