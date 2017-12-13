@@ -361,6 +361,46 @@
         <artifactId>oasp4j-web</artifactId>
         <version>${project.version}</version>
       </dependency>
+	  <dependency>
+		<groupId>io.oasp.java.starters</groupId>
+		<artifactId>oasp4j-batch-starter</artifactId>
+		<version>${oasp4j.version}</version>
+	  </dependency>
+	  <dependency>
+		<groupId>io.oasp.java.starters</groupId>
+		<artifactId>oasp4j-core-starter</artifactId>
+		<version>${oasp4j.version}</version>
+	  </dependency>
+	  <dependency>
+		<groupId>io.oasp.java.starters</groupId>
+		<artifactId>oasp4j-jpa-starter</artifactId>
+		<version>${oasp4j.version}</version>
+	  </dependency>
+	  <dependency>
+		<groupId>io.oasp.java.starters</groupId>
+		<artifactId>oasp4j-logging-starter</artifactId>
+		<version>${oasp4j.version}</version>
+	  </dependency>
+	  <dependency>
+		<groupId>io.oasp.java.starters</groupId>
+		<artifactId>oasp4j-rest-starter</artifactId>
+		<version>${oasp4j.version}</version>
+	  </dependency>
+	  <dependency>
+		<groupId>io.oasp.java.starters</groupId>
+		<artifactId>oasp4j-security-starter</artifactId>
+		<version>${oasp4j.version}</version>
+	  </dependency>
+	  <dependency>
+		<groupId>io.oasp.java.starters</groupId>
+		<artifactId>oasp4j-test-starter</artifactId>
+		<version>${oasp4j.version}</version>
+	  </dependency>
+	  <dependency>
+		<groupId>io.oasp.java.starters</groupId>
+		<artifactId>oasp4j-web-starter</artifactId>
+		<version>${oasp4j.version}</version>
+	  </dependency>
     </dependencies>
   </dependencyManagement>
 

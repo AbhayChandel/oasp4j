@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>io.oasp.java.dev</groupId>
+    <artifactId>oasp4j</artifactId>
+    <version>dev-SNAPSHOT</version>
+  </parent>
+  <artifactId>oasp4j-starters</artifactId>
+  <packaging>pom</packaging>
+  <name>${project.artifactId}</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <oasp.modules.groupId>io.oasp.java.modules</oasp.modules.groupId>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- BOM of spring-boot -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring.boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!-- BOM of OASP4J -->
+      <dependency>
+        <groupId>io.oasp.java</groupId>
+        <artifactId>oasp4j-bom</artifactId>
+        <version>${oasp4j.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <modules>
+    <module>oasp4j-security-starter</module>
+    <module>oasp4j-web-starter</module>
+    <module>oasp4j-logging-starter</module>
+    <module>oasp4j-rest-starter</module>
+    <module>oasp4j-core-starter</module>
+    <module>oasp4j-batch-starter</module>
+    <module>oasp4j-jpa-starter</module>
+    <module>oasp4j-test-starter</module>
+  </modules>
+</project>
